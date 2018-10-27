@@ -10,4 +10,12 @@
 - [] Pantalla de registro
 - [] Pantalla para seleccionar habilidades
 
-## Funcionalidades a desarrollar
+## Mauricio
+* Catalogue
+* JobCard
+* JobContainer
+
+## Erick
+* Map
+* NavBar
+* Details
