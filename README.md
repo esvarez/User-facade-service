@@ -11,11 +11,10 @@
 - [ ] Pantalla para seleccionar habilidades
 
 ## Mauricio
-* Catalogue
-* JobCard
-* JobContainer
+* Filters
+* navbar
+* Simulador
 
 ## Erick
 * Map
-* NavBar
-* Details
+
