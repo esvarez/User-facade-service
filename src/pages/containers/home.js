@@ -7,8 +7,8 @@ import MapMx from '../../components/Map/Map';
 class Home extends Component {
     render(props){
         return (
-            <HomeLayout>
-                <Filter/>
+            <HomeLayout cities={this.props.cities}>
+                <Filter cities={this.props.cities}/>
                 <CardDetail/>
                 <MapMx/>
             </HomeLayout>
