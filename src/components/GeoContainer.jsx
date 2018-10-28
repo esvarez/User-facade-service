@@ -9,14 +9,6 @@ const GeoContainer = (props) => (
 <div>
     <NavBar/>
     <div className="container">
-        <Filter
-            className="space-around"
-            cities = {props.cities}
-            factors = {props.factors}
-            citySelected = {props.citySelected}
-            onChangeCity = { props.onChangeCity }
-            onChangeFactor = { props.onChangueFactor }
-        />
         <CardDetail
         className="space-around"
         onclickDetailButton = { props.onclickDetailButton }
@@ -24,6 +16,14 @@ const GeoContainer = (props) => (
         <Graphs
         isGraphVisible = { props.isGraphVisible }
         data = {props.dataChart}
+        />
+        <Filter
+            className="space-around"
+            cities = {props.cities}
+            factors = {props.factors}
+            citySelected = {props.citySelected}
+            onChangeCity = { props.onChangeCity }
+            onChangeFactor = { props.onChangueFactor }
         />
         <MapMx
             className="space-around"
