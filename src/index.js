@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-//import './index.css';
+import './index.css';
 //import App from './App';
 //import * as serviceWorker from './serviceWorker';
 //import App from './Ejemplo/app'
@@ -9,7 +9,7 @@ import Filter from './components/Filter/Filter'
 import CardDetail from './components/CardDetail/CardDetail'
 
 ReactDOM.render(
-    <div>
+    <div class="container">
     <Filter />
     <CardDetail />
         <MapMx />
