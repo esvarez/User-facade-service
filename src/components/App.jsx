@@ -21,7 +21,7 @@ class App extends Component{
         ],
         zoom: 4,
         isGraphVisible: false,
-        o3: 1,
+        o3: 0,
         o3Original: 1
     }
     componentWillMount = ()=>{
@@ -90,8 +90,9 @@ class App extends Component{
         factor.value = e.target.value
         this.setState({
             factors:factors,
-            o3: parseInt(this.state.o3Original) + parseInt(factors[0].value)
+            o3: (factors[0].value)?parseInt(this.state.o3Original) + parseInt(factors[0].value) : this.state.o3Original
         })
+        //console.log(parseInt(this.state.o3Original) + parseInt(factors[0].value))
         //console.log(this.state.clima[0].state)
     }
     handleOnClickDetailButton = e => {

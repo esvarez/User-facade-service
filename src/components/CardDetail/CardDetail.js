@@ -22,12 +22,7 @@ const CardDetail = (props) => (
                     <Button variant="outlined" color="primary" >
                         Monóxido de carbono<strong>(CO)</strong>
                     </Button>
-                </Grid>
-                <Grid item xs={12} sm={4}>
-                    <Button variant="outlined" color="primary" onClick={props.onclickDetailButton} >
-                        Ozono<strong>(O3)</strong>
-                    </Button>
-                </Grid>
+                </Grid>                
                 <Grid item xs={12} sm={4}>
                     <Button variant="outlined" color="primary" >
                         Particulas Menores a 2.5<strong>(PM2.5)</strong>
