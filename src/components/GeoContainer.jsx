@@ -14,12 +14,14 @@ const GeoContainer = (props) => (
             factors = {props.factors}
             citySelected = {props.citySelected}
             onChangeCity = { props.onChangeCity }
+            onChangeFactor = { props.onChangueFactor }
         />
         <CardDetail
         className="space-around"
          />
         <MapMx
             className="space-around"
+            factors={props.factors}
             citySelected = {props.citySelected}
             position = { props.position }
             zoom = { props.zoom }

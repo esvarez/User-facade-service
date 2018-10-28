@@ -8,7 +8,7 @@ import FormControl from '@material-ui/core/FormControl';
 const Factor = props => (
     <FormControl className="input">
         <InputLabel
-          htmlFor={props.is}
+          htmlFor={props.id}
         >
           {props.title}
         </InputLabel>
@@ -16,7 +16,8 @@ const Factor = props => (
           defaultValue={props.value}
           className="input"
           type={props.type}
-          id={props.id}
+          id={""+props.id}
+          onChange={props.onChangeFactor}
         />
     </FormControl>
 )

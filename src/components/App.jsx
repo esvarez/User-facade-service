@@ -1,31 +1,25 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
 import GeoContainer from './GeoContainer'
 import './App.css'
 import cities from '../data/cities.json';
 import factors from '../data/factors.json';
 
 class App extends Component{
-    constructor(...props){
-        super(...props)
-        this.state = {
-            cities,
-            factors,
-            citySelected: {
-                id: '',
-                city: '',
-                posicion:[]
-            },
-            position: [
-                19.999440,
-                -99.493139
-            ],
-            zoom: 4
-        }
-
-        this.handleOnChangeCity = this.handleOnChangeCity.bind(this)
+    state = {
+        cities,
+        factors,
+        citySelected: {
+            id: '',
+            city: '',
+            posicion:[]
+        },
+        position: [
+            19.999440,
+            -99.493139
+        ],
+        zoom: 4
     }
-
-    handleOnChangeCity(e){
+    handleOnChangeCity = (e)=>{
         this.setState({
             citySelected:{
                 id: e.target.value,
@@ -33,6 +27,18 @@ class App extends Component{
                 posicion: e.target.value
             },
             zoom: 10
+        })
+    }
+    handleOnChangueFactors = e => {
+        let id = e.target.id
+        let factor = factors.filter(factor=>""+factor.id===id)
+        factor = factor.length > 0 ? factor[0]:null;
+        if(!factor){
+            return;
+        }
+        factor.value = e.target.value
+        this.setState({
+            factors:factors
         })
     }
 
@@ -43,6 +49,7 @@ class App extends Component{
                 factors = { this.state.factors }
                 citySelected = { this.state.citySelected }
                 onChangeCity = { this.handleOnChangeCity }
+                onChangueFactor = {this.handleOnChangueFactors}
                 position = { this.state.position }
                 zoom = { this.state.zoom }
             />

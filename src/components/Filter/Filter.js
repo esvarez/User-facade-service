@@ -4,7 +4,6 @@ import './Filter.css'
 import Grid from '@material-ui/core/Grid';
 
 import Card from '@material-ui/core/Card';
-import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
 
 import Select from '@material-ui/core/Select';
@@ -40,13 +39,13 @@ class Filter extends Component{
         <Card>
             <CardContent>
                 <FormControl className="input">
-                  <InputLabel htmlFor="age-simple">Ciudad</InputLabel>
+                  <InputLabel htmlFor="city">Ciudad</InputLabel>
                   <Select
                     onChange = { this.props.onChangeCity }
                     value = {this.props.citySelected.id}
                     inputProps={{
-                      name: 'age',
-                      id: 'age-simple',
+                      name: 'city',
+                      id: 'city',
                     }}
                   >
                     <MenuItem value="">
@@ -68,14 +67,14 @@ class Filter extends Component{
                 <div>
                     <h3 className="center">Variables a modificar</h3>
                     <p className="center">
-                        Con las siguientes variables podremos simulos como afectarian
-                        la calidad del aire en el pais seleccionado
+                        Con las siguientes variables podremos simular como afectarian
+                        la calidad del aire en la ciudad seleccionado
                     </p>
                     <Grid container spacing={16}>
                         {this.props.factors.map(item=>{
                             return (
-                                <Grid item xs={12} sm={4}>
-                                    <Factor key={item.id} title={item.name} type={item.type} value={item.value}/>
+                                <Grid key={item.id} item xs={12} sm={4}>
+                                    <Factor id={item.id} key={item.id} title={item.name} type={item.type} value={item.value} onChangeFactor={this.props.onChangeFactor}/>
                                 </Grid>
                             )
                         })}
