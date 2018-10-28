@@ -4,7 +4,7 @@ import Filter from './Filter/Filter'
 import CardDetail from './CardDetail/CardDetail'
 
 const GeoContainer = (props) => (
-    <div class="container">             
+    <div className="container">             
         <Filter 
             cities = {props.cities}
             citySelected = {props.citySelected}
