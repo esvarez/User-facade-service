@@ -1,0 +1,19 @@
+[{
+    "id":1,
+    "name":"Autos",
+    "type":"number",
+    "value":0
+},
+{
+    "id":2,
+    "name":"Empresas",
+    "type":"number",
+    "value":0
+},
+{
+    "id":3,
+    "name":"Basura",
+    "type":"number",
+    "value":0
+}
+]

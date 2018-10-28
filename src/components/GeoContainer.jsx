@@ -4,14 +4,15 @@ import Filter from './Filter/Filter'
 import CardDetail from './CardDetail/CardDetail'
 
 const GeoContainer = (props) => (
-    <div class="container">             
-        <Filter 
+    <div className="container">
+        <Filter
             cities = {props.cities}
+            factors = {props.factors}
             citySelected = {props.citySelected}
             onChangeCity = { props.onChangeCity }
         />
         <CardDetail />
-        <MapMx 
+        <MapMx
             citySelected = {props.citySelected}
         />
     </div>
