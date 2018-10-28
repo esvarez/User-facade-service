@@ -9,6 +9,9 @@ const { Map: LeafletMap, TileLayer, Marker, Popup } = ReactLeaflet
 const MapMx = (props) => (
     <Card>
         {(props.citySelected.posicion.length > 0)? props.citySelected.posicion : 'undefine'}
+        {props.factors[0].id}
+        {props.factors[0].name}
+        {props.factors[0].value}
         <CardContent>
             <LeafletMap center={(props.citySelected.posicion.length > 0)? props.citySelected.posicion : props.position } zoom={props.zoom}>
             <TileLayer

@@ -39,13 +39,13 @@ class Filter extends Component{
         <Card>
             <CardContent>
                 <FormControl className="input">
-                  <InputLabel htmlFor="age-simple">Ciudad</InputLabel>
+                  <InputLabel htmlFor="city">Ciudad</InputLabel>
                   <Select
                     onChange = { this.props.onChangeCity }
                     value = {this.props.citySelected.id}
                     inputProps={{
-                      name: 'age',
-                      id: 'age-simple',
+                      name: 'city',
+                      id: 'city',
                     }}
                   >
                     <MenuItem value="">

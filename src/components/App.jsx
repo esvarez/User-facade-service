@@ -5,27 +5,21 @@ import cities from '../data/cities.json';
 import factors from '../data/factors.json';
 
 class App extends Component{
-    constructor(...props){
-        super(...props)
-        this.state = {
-            cities,
-            factors,
-            citySelected: {
-                id: '',
-                city: '',
-                posicion:[]
-            },
-            position: [
-                19.999440,
-                -99.493139
-            ],
-            zoom: 4
-        }
-
-        this.handleOnChangeCity = this.handleOnChangeCity.bind(this)
+    state = {
+        cities,
+        factors,
+        citySelected: {
+            id: '',
+            city: '',
+            posicion:[]
+        },
+        position: [
+            19.999440,
+            -99.493139
+        ],
+        zoom: 4
     }
-
-    handleOnChangeCity(e){
+    handleOnChangeCity = (e)=>{
         this.setState({
             citySelected:{
                 id: e.target.value,
@@ -35,8 +29,17 @@ class App extends Component{
             zoom: 10
         })
     }
-    handleOnChangueFactors(e){
-        console.log({value:e.target.value,target:e.target,id:e.target.id});
+    handleOnChangueFactors = e => {
+        let id = e.target.id
+        let factor = factors.filter(factor=>""+factor.id===id)
+        factor = factor.length > 0 ? factor[0]:null;
+        if(!factor){
+            return;
+        }
+        factor.value = e.target.value
+        this.setState({
+            factors:factors
+        })
     }
 
     render(){
