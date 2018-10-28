@@ -4,11 +4,17 @@ import Filter from './Filter/Filter'
 import CardDetail from './CardDetail/CardDetail'
 import NavBar from './NavBar'
 import Graphs from './Graphs/Graphs'
+import Cities from './cities/cities'
 
 const GeoContainer = (props) => (
 <div>
     <NavBar/>
     <div className="container">
+        <Cities
+        cities = {props.cities}
+        citySelected = {props.citySelected}
+        onChangeCity = { props.onChangeCity }
+        />
         <CardDetail
         className="space-around"
         onclickDetailButton = { props.onclickDetailButton }
@@ -19,9 +25,7 @@ const GeoContainer = (props) => (
         />
         <Filter
             className="space-around"
-            cities = {props.cities}
             factors = {props.factors}
-            citySelected = {props.citySelected}
             onChangeCity = { props.onChangeCity }
             onChangeFactor = { props.onChangueFactor }
         />

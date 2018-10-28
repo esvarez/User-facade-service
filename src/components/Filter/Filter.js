@@ -35,32 +35,7 @@ class Filter extends Component{
 
   render(){
     return(
-        <div>
         <Card>
-            <CardContent>
-                <FormControl className="input">
-                  <InputLabel htmlFor="city">Ciudad</InputLabel>
-                  <Select
-                    onChange = { this.props.onChangeCity }
-                    value = {this.props.citySelected.id}
-                    inputProps={{
-                      name: 'city',
-                      id: 'city',
-                    }}
-                  >
-                    <MenuItem value="">
-                      <em>Ninguna</em>
-                    </MenuItem>
-                    {
-                        this.props.cities.map(item=>{
-                            return <MenuItem key={item.id} value={item.posicion}>{item.city}</MenuItem>
-                        })
-                    }
-                  </Select>
-                </FormControl>
-            </CardContent>
-        </Card>
-            <Card>
             <CardContent className="content">
             {
                 this.state.visible &&
@@ -81,14 +56,13 @@ class Filter extends Component{
                     </Grid>
                 </div>
             }
-                <Grid item xs={12} className="center action-container">
-                    <Button variant="extendedFab" color="primary" aria-label="Delete" onClick={this.showSimulationVars}>
-                        Simular <Icon>play_for_work</Icon>
-                    </Button>
-                </Grid>
-                </CardContent>
-            </Card>
-        </div>
+            <Grid item xs={12} className="center action-container">
+                <Button variant="extendedFab" color="primary" aria-label="Delete" onClick={this.showSimulationVars}>
+                    Simular <Icon>play_for_work</Icon>
+                </Button>
+            </Grid>
+            </CardContent>
+        </Card>
         )
     }
 }
