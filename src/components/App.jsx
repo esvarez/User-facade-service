@@ -3,7 +3,6 @@ import GeoContainer from './GeoContainer'
 import './App.css'
 import cities from '../data/cities.json';
 import factors from '../data/factors.json';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
 class App extends Component{
     state = {
@@ -19,7 +18,8 @@ class App extends Component{
             19.999440,
             -99.493139
         ],
-        zoom: 4
+        zoom: 4,
+        isGraphVisible: false
     }
     componentWillMount = ()=>{
      fetch('https://api.datos.gob.mx/v2/sinaica?page=2')
@@ -53,6 +53,12 @@ class App extends Component{
         })
         console.log(this.state.clima[0].state)
     }
+    handleOnClickDetailButton = e => {
+        console.log(e)
+        this.setState({
+            isGraphVisible: true    
+        })            
+    }
 
     render(){
         return(
@@ -66,6 +72,9 @@ class App extends Component{
                 onChangueFactor = {this.handleOnChangueFactors}
                 position = { this.state.position }
                 zoom = { this.state.zoom }
+
+                isGraphVisible = { this.state.isGraphVisible }
+                onclickDetailButton = { this.handleOnClickDetailButton }
             />
         </div>
         )

@@ -3,6 +3,7 @@ import MapMx from './Map/Map'
 import Filter from './Filter/Filter'
 import CardDetail from './CardDetail/CardDetail'
 import NavBar from './NavBar'
+import Graphs from './Graphs/Graphs'
 
 const GeoContainer = (props) => (
 <div>
@@ -18,14 +19,18 @@ const GeoContainer = (props) => (
         />
         <CardDetail
         className="space-around"
+        onclickDetailButton = { props.onclickDetailButton }
          />
+        <Graphs 
+        isGraphVisible = { props.isGraphVisible }
+        />
         <MapMx
             className="space-around"
             factors={props.factors}
             clima={props.clima}
             citySelected = {props.citySelected}
             position = { props.position }
-            zoom = { props.zoom }
+            zoom = { props.zoom }            
         />
     </div>
 </div>
