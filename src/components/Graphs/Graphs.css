@@ -6,3 +6,6 @@
     opacity: 2;
     transition: opacity 1s ease-in;
 }
+.center{
+    text-align: center;
+}

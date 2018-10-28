@@ -9,7 +9,7 @@ const NavBar = (props)=>{
           <AppBar position="static" color="primary">
             <Toolbar>
               <Typography variant="h6" color="inherit">
-                Calidad Pura
+                Air Healthy
               </Typography>
             </Toolbar>
           </AppBar>
