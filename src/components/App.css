@@ -7,28 +7,29 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-  
+
   code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
       monospace;
   }
-  
+
   .container{
     margin-left: auto;
     margin-right: auto;
     min-height: 100vh;
     max-width: 1120px;
   }
-  .MuiPaper-root-2.MuiPaper-elevation1-5.MuiPaper-rounded-3.MuiCard-root-1 {
-    margin-bottom: 1rem;
+
+  .MuiPaper-root-10.MuiPaper-elevation1-13.MuiPaper-rounded-11.MuiCard-root-76{
+    margin: 1rem;
   }
   @media only screen and (max-width: 1200px){
     .container{
       padding: 0 36px;
-    }  
+    }
   }
   @media only screen and (max-width: 360px){
     .container{
       padding: 0 8px;
-    }  
+    }
   }
