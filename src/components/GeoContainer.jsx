@@ -23,12 +23,6 @@ const GeoContainer = (props) => (
         isGraphVisible = { props.isGraphVisible }
         data = {props.dataChart}
         />
-        <Filter
-            className="space-around"
-            factors = {props.factors}
-            onChangeCity = { props.onChangeCity }
-            onChangeFactor = { props.onChangueFactor }
-        />
         <MapMx
             className="space-around"
             factors={props.factors}
@@ -37,6 +31,12 @@ const GeoContainer = (props) => (
             position = { props.position }
             zoom = { props.zoom }
             o3 = { props.o3 }
+        />
+        <Filter
+            className="space-around"
+            factors = {props.factors}
+            onChangeCity = { props.onChangeCity }
+            onChangeFactor = { props.onChangueFactor }
         />
     </div>
 </div>
