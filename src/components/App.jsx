@@ -39,8 +39,7 @@ class App extends Component{
                  fetch('https://api.datos.gob.mx/v2/sinaica?city=Morelia&parametro=O3&page='+lastPage)
                  .then(response => response.json())
                  .then(data => {
-                     let lastDate =
-                     data = data.results.filter(item=> item['date-insert'].split('T')[0]=="2018-10-28")
+                     data = data.results.filter(item=> item['date-insert'].split('T')[0]==="2018-10-28")
                      data =
                      {labels: [
                          '00:00:00',
@@ -89,7 +88,7 @@ class App extends Component{
         }
         factor.value = e.target.value
         let temp = this.state.dataChart;
-        if(temp.length == 0){
+        if(temp.length+"" === ""+0){
             return;
         }
         let sum =  parseFloat(temp.datasets[0].data[id-1]) + parseFloat(e.target.value)/15;
@@ -111,7 +110,6 @@ class App extends Component{
     render(){
         return(
         <div>
-        {console.log(this.state.dataChart)}
             <GeoContainer
                 cities = { this.state.cities }
                 factors = { this.state.factors }

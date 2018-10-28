@@ -5,7 +5,6 @@ import CardContent from '@material-ui/core/CardContent'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import {Doughnut} from 'react-chartjs-2';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import purple from '@material-ui/core/colors/purple';
 
 const Graphs = (props) => (
     <ReactCSSTransitionGroup
@@ -19,7 +18,7 @@ const Graphs = (props) => (
         <Card>
             <CardContent>
             {
-                (props.data.length == 0)?
+                (props.data.length+"" === 0+"")?
                 <div className="center">
                   <CircularProgress  size={100} />
                 </div>:
