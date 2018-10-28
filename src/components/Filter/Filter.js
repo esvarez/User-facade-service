@@ -16,36 +16,39 @@ import Icon from '@material-ui/core/Icon';
 
 import Button from '@material-ui/core/Button';
 
-function Filter(){
-    return(
-        <Card>
-            <CardHeader title="Variables a modificar" className="center" />
-            <p className="center">
-                Con las siguientes variables podremos simulos como afectarian
-                la calidad del aire en el pais seleccionado
-            </p>
-            <CardContent className="content">
-                <Grid container spacing={16}>
-                    <Grid item xs={12} sm={4}>
-                        <FormControl>
-                          <InputLabel htmlFor="age-simple">Ciudad</InputLabel>
-                          <Select
-                            value={10}
-                            inputProps={{
-                              name: 'age',
-                              id: 'age-simple',
-                            }}
-                          >
-                            <MenuItem value="">
-                              <em>Ninguna</em>
-                            </MenuItem>
-                            <MenuItem value={10}>Morelia</MenuItem>
-                            <MenuItem value={20}>Guadalajara</MenuItem>
-                            <MenuItem value={30}>Monterrey</MenuItem>
-                          </Select>
-                        </FormControl>
-                    </Grid>
-                    <Grid item xs={12} sm={4}>
+const Filter = (props) => (
+  <Card>
+    <CardHeader title="Variables a modificar" className="center" />
+      <p className="center">
+        Con las siguientes variables podremos simulos como afectarian
+        la calidad del aire en el pais seleccionado
+    </p>
+    <CardContent className="content">
+    <Grid container spacing={16}>
+      <Grid item xs={12} sm={4}>
+          <FormControl>
+            <InputLabel htmlFor="age-simple">Ciudad</InputLabel>
+            <Select
+              value={10}
+              inputProps={{
+                name: 'age',
+                id: 'age-simple',
+              }}
+            >
+              <MenuItem value="">
+                <em>Ninguna</em>
+              </MenuItem>
+              {
+                props.ciudades.map( ciudad =>(
+                  <MenuItem value={10}>{ciudad.city}</MenuItem>
+                ))
+              }
+              
+            </Select>
+          </FormControl>
+      </Grid>
+      <Grid item xs={12} sm={4}>
+    
                       <FormControl variant="outlined">
                           <InputLabel
                             htmlFor="filtro1"
@@ -128,8 +131,7 @@ function Filter(){
                     </Button>
                 </Grid>
             </CardContent>
-        </Card>
-    )
-}
+        </Card>    
+)
 
 export default Filter

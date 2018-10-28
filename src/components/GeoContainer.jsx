@@ -5,7 +5,9 @@ import CardDetail from './CardDetail/CardDetail'
 
 const GeoContainer = (props) => (
     <div class="container">
-        <Filter />
+        <Filter 
+            ciudades={props.ciudades}
+        />
         <CardDetail />
         <MapMx />
     </div>
