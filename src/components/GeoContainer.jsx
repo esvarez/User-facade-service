@@ -14,6 +14,8 @@ const GeoContainer = (props) => (
         <CardDetail />
         <MapMx
             citySelected = {props.citySelected}
+            position = { props.position }
+            zoom = { props.zoom }
         />
     </div>
 )

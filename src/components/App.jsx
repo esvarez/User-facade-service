@@ -14,25 +14,26 @@ class App extends Component{
                 id: '',
                 city: '',
                 posicion:[]
-            }
+            },
+            position: [
+                19.999440,
+                -99.493139
+            ],
+            zoom: 4
         }
 
         this.handleOnChangeCity = this.handleOnChangeCity.bind(this)
     }
 
     handleOnChangeCity(e){
-        console.log(this.state.citySelected)
-        console.log(e.target.value)
-        console.log(e.target)
-
         this.setState({
             citySelected:{
                 id: e.target.value,
                 city: 'y',
-                posicion: [10,20]
-            }
+                posicion: e.target.value
+            },
+            zoom: 10
         })
-        console.log(this.state.citySelected)
     }
 
     render(){
@@ -42,6 +43,8 @@ class App extends Component{
                 factors = { this.state.factors }
                 citySelected = { this.state.citySelected }
                 onChangeCity = { this.handleOnChangeCity }
+                position = { this.state.position }
+                zoom = { this.state.zoom }
             />
         )
     }

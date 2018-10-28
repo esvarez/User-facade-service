@@ -60,7 +60,7 @@ class Filter extends Component{
                                 </MenuItem>
                                 {
                                     this.props.cities.map(item=>{
-                                        return <MenuItem key={item.id} value={item.id}>{item.city}</MenuItem>
+                                        return <MenuItem key={item.id} value={item.posicion}>{item.city}</MenuItem>
                                     })
                                 }
                               </Select>

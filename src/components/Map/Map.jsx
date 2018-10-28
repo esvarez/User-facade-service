@@ -7,41 +7,42 @@ import CardContent from '@material-ui/core/CardContent'
 import Button from '@material-ui/core/Button'
 const { Map: LeafletMap, TileLayer, Marker, Popup } = ReactLeaflet
 
-/*
-<Marker position={position}>
-<Popup>
-Usted seleccionó. <br/> Morelia.
-</Popup>
-</Marker>
-*/
+const MapMx = (props) => (
+    <Card>
+        {(props.citySelected.posicion.length > 0)? props.citySelected.posicion : 'undefine'}
+        <CardContent>                    
+            <LeafletMap center={(props.citySelected.posicion.length > 0)? props.citySelected.posicion : props.position } zoom={props.zoom}>
+            <TileLayer
+                attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
+                />
+            {props.citySelected.posicion.length > 0 &&
+                <Marker position={props.citySelected.posicion}>
+                    <Popup>
+                        Usted seleccionó. <br/> Morelia.
+                    </Popup>
+                </Marker>                        
+            }
+            </LeafletMap>
+        </CardContent>
+        <CardActions>            
+        </CardActions>
+    </Card>    
 
-class MapMx extends Component {
-    constructor(...props){
-        super(...props)
+)
+/*
+{
+    constructor(props){
+        super(props)
         this.state = {
-            lat: 19.999440, 
-            lng: -99.493139,
-            zoom: 4            
-        }        
+                      
+        }       
     }
     render(){
         const position = [this.state.lat, this.state.lng]
         return (
-            <Card>
-                {this.props.citySelected.id}
-                <CardContent>                    
-                    <LeafletMap center={position} zoom={this.state.zoom}>
-                    <TileLayer
-                        attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                        url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
-                        />
-                    </LeafletMap>
-                </CardContent>
-                <CardActions>
-                    <Button size="small">Simulador</Button>
-                </CardActions>
-            </Card>    
         )
      }
 }
+*/
 export default MapMx
