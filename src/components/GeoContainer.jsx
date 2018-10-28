@@ -6,13 +6,13 @@ import CardDetail from './CardDetail/CardDetail'
 const GeoContainer = (props) => (
     <div class="container">             
         <Filter 
-            ciudades = {props.ciudades}
-            ciudadSelected = {props.ciudadSelected}
+            cities = {props.cities}
+            citySelected = {props.citySelected}
             onChangeCity = { props.onChangeCity }
         />
         <CardDetail />
         <MapMx 
-            ciudadSelected = {props.ciudadSelected}
+            citySelected = {props.citySelected}
         />
     </div>
 )

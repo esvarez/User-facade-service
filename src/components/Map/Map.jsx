@@ -22,14 +22,13 @@ class MapMx extends Component {
             lat: 19.999440, 
             lng: -99.493139,
             zoom: 4            
-        }
-        console.log(this.props)
+        }        
     }
     render(){
         const position = [this.state.lat, this.state.lng]
         return (
             <Card>
-                {this.props.ciudadSelected.id}
+                {this.props.citySelected.id}
                 <CardContent>                    
                     <LeafletMap center={position} zoom={this.state.zoom}>
                     <TileLayer

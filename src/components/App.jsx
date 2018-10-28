@@ -7,8 +7,8 @@ class App extends Component{
     constructor(...props){
         super(...props)
         this.state = {            
-            ciudades: cities,
-            ciudadSelected: {
+            cities,
+            citySelected: {
                 id: '',
                 city: '',
                 posicion:[]
@@ -19,25 +19,25 @@ class App extends Component{
     }
 
     handleOnChangeCity(e){
-        console.log(this.state.ciudadSelected)
+        console.log(this.state.citySelected)
         console.log(e.target.value)
         console.log(e.target)
         
         this.setState({
-            ciudadSelected:{
+            citySelected:{
                 id: e.target.value,
                 city: 'y',
                 posicion: [10,20]
             }            
         })
-        console.log(this.state.ciudadSelected)        
+        console.log(this.state.citySelected)        
     }
 
     render(){
         return(
             <GeoContainer 
-                ciudades = { this.state.ciudades }  
-                ciudadSelected = { this.state.ciudadSelected }              
+                cities = { this.state.cities }  
+                citySelected = { this.state.citySelected }              
                 onChangeCity = { this.handleOnChangeCity }
             />
         )
