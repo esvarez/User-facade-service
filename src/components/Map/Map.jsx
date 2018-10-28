@@ -9,7 +9,6 @@ const { Map: LeafletMap, TileLayer, Marker, Popup, LayerGroup,Circle } = ReactLe
 const MapMx = (props) => (
     <Card>
         {(props.citySelected.posicion.length > 0)? props.citySelected.posicion : 'undefine'}
-        {console.log(props)}        
         <CardContent>
             {/*props.clima.map(item=>(<h6>{item.state}</h6>))*/}
             <LeafletMap center={(props.citySelected.posicion.length > 0)? props.citySelected.posicion : props.position } zoom={props.zoom}>
@@ -24,11 +23,11 @@ const MapMx = (props) => (
                     </Popup>
                 </Marker>
             }
-            {props.citySelected.posicion.length > 0 &&                
+            {props.citySelected.posicion.length > 0 &&
                 <LayerGroup>
                     <Circle center={props.citySelected.posicion} fillColor="red" radius={props.o3*1} stroke={false} />
                     <Circle center={props.citySelected.posicion} fillColor="red" radius={props.o3*2} stroke={false} />
-                    <Circle center={props.citySelected.posicion} fillColor="red" color="red" radius={props.o3*3} />                    
+                    <Circle center={props.citySelected.posicion} fillColor="red" color="red" radius={props.o3*3} />
                 </LayerGroup>
             }
             </LeafletMap>

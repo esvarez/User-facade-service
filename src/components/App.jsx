@@ -88,15 +88,19 @@ class App extends Component{
             return;
         }
         factor.value = e.target.value
+        let temp = this.state.dataChart;
+        if(temp.length == 0){
+            return;
+        }
+        let sum =  parseFloat(temp.datasets[0].data[id-1]) + parseFloat(e.target.value)/15;
+        temp.datasets[0].data[id-1] = isNaN(sum) ? 0 : sum;
         this.setState({
             factors:factors,
-            o3: (factors[0].value)?parseInt(this.state.o3Original) + parseInt(factors[0].value) : this.state.o3Original
+            o3: (factors[0].value)?parseInt(this.state.o3Original) + parseInt(factors[0].value) : this.state.o3Original,
+            dataChart: temp
         })
-        //console.log(parseInt(this.state.o3Original) + parseInt(factors[0].value))
-        //console.log(this.state.clima[0].state)
     }
     handleOnClickDetailButton = e => {
-        console.log(e)
         this.setState({
             o3: 500,
             o3Original: 500,
@@ -107,6 +111,7 @@ class App extends Component{
     render(){
         return(
         <div>
+        {console.log(this.state.dataChart)}
             <GeoContainer
                 cities = { this.state.cities }
                 factors = { this.state.factors }

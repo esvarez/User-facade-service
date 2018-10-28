@@ -1,20 +1,9 @@
-# JobsMX
 
-## Pantallas a desarrollar
+## Descripción
+  El proyecto solucionara el problema de contaminación ambiental en el aire
+  mediante la Información de en un mapa en el cual podrás simular diferentes
+  escenarios y ver como afectan la calidad del aire.
 
-- [ ] Pantalla de inicio
-- [ ] Pantalla para mostrar Ofertas
-- [ ] Filtro de ofertas
-- [ ] Pantalla con mapa de oferta
-- [ ] Detalles de la oferta
-- [ ] Pantalla de registro
-- [ ] Pantalla para seleccionar habilidades
-
-## Mauricio
-* Filters
-* navbar
-* Simulador
-
-## Erick
-* Map
-
+## Integrantes
+* Erick suárez Zavala
+* Mauricio Jesus Hernandez diaz
