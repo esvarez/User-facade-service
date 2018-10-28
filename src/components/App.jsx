@@ -8,6 +8,7 @@ class App extends Component{
     state = {
         cities,
         factors,
+        clima:[],
         citySelected: {
             id: '',
             city: '',
@@ -19,7 +20,16 @@ class App extends Component{
         ],
         zoom: 4
     }
-    handleOnChangeCity = (e)=>{
+    componentWillMount = ()=>{
+     fetch('https://api.datos.gob.mx/v2/sinaica?page=2')
+         .then(response => response.json())
+         .then(clima => {
+            this.setState({
+                clima:clima.results
+            })
+         })
+    }
+    handleOnChangeCity = e=>{
         this.setState({
             citySelected:{
                 id: e.target.value,
@@ -40,19 +50,23 @@ class App extends Component{
         this.setState({
             factors:factors
         })
+        console.log(this.state.clima[0].state)
     }
 
     render(){
         return(
+        <div>
             <GeoContainer
                 cities = { this.state.cities }
                 factors = { this.state.factors }
+                clima = {this.state.clima}
                 citySelected = { this.state.citySelected }
                 onChangeCity = { this.handleOnChangeCity }
                 onChangueFactor = {this.handleOnChangueFactors}
                 position = { this.state.position }
                 zoom = { this.state.zoom }
             />
+            </div>
         )
     }
 

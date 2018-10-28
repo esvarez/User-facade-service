@@ -22,6 +22,7 @@ const GeoContainer = (props) => (
         <MapMx
             className="space-around"
             factors={props.factors}
+            clima={props.clima}
             citySelected = {props.citySelected}
             position = { props.position }
             zoom = { props.zoom }
