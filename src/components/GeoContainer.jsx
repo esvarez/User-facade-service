@@ -32,6 +32,7 @@ const GeoContainer = (props) => (
             citySelected = {props.citySelected}
             position = { props.position }
             zoom = { props.zoom }
+            o3 = { props.o3 }
         />
     </div>
 </div>

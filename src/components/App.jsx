@@ -20,7 +20,9 @@ class App extends Component{
             -99.493139
         ],
         zoom: 4,
-        isGraphVisible: false
+        isGraphVisible: false,
+        o3: 1,
+        o3Original: 1
     }
     componentWillMount = ()=>{
      fetch('https://api.datos.gob.mx/v2/sinaica?page=2')
@@ -87,13 +89,16 @@ class App extends Component{
         }
         factor.value = e.target.value
         this.setState({
-            factors:factors
+            factors:factors,
+            o3: parseInt(this.state.o3Original) + parseInt(factors[0].value)
         })
-        console.log(this.state.dataChart)
+        //console.log(this.state.clima[0].state)
     }
     handleOnClickDetailButton = e => {
         console.log(e)
         this.setState({
+            o3: 500,
+            o3Original: 500,
             isGraphVisible: true
         })
     }
@@ -112,6 +117,7 @@ class App extends Component{
                 position = { this.state.position }
                 zoom = { this.state.zoom }
 
+                o3 = {this.state.o3}
                 isGraphVisible = { this.state.isGraphVisible }
                 onclickDetailButton = { this.handleOnClickDetailButton }
             />

@@ -4,14 +4,12 @@ import * as ReactLeaflet from 'react-leaflet'
 import Card from '@material-ui/core/Card'
 import CardActions from '@material-ui/core/CardActions'
 import CardContent from '@material-ui/core/CardContent'
-const { Map: LeafletMap, TileLayer, Marker, Popup } = ReactLeaflet
+const { Map: LeafletMap, TileLayer, Marker, Popup, LayerGroup,Circle } = ReactLeaflet
 
 const MapMx = (props) => (
     <Card>
         {(props.citySelected.posicion.length > 0)? props.citySelected.posicion : 'undefine'}
-        {props.factors[0].id}
-        {props.factors[0].name}
-        {props.factors[0].value}
+        {console.log(props)}        
         <CardContent>
             {/*props.clima.map(item=>(<h6>{item.state}</h6>))*/}
             <LeafletMap center={(props.citySelected.posicion.length > 0)? props.citySelected.posicion : props.position } zoom={props.zoom}>
@@ -25,6 +23,13 @@ const MapMx = (props) => (
                         Usted seleccionó. <br/> Morelia.
                     </Popup>
                 </Marker>
+            }
+            {props.citySelected.posicion.length > 0 &&                
+                <LayerGroup>
+                    <Circle center={props.citySelected.posicion} fillColor="red" radius={props.o3*1} stroke={false} />
+                    <Circle center={props.citySelected.posicion} fillColor="red" radius={props.o3*2} stroke={false} />
+                    <Circle center={props.citySelected.posicion} fillColor="red" color="red" radius={props.o3*3} />                    
+                </LayerGroup>
             }
             </LeafletMap>
         </CardContent>
