@@ -13,6 +13,7 @@ const MapMx = (props) => (
         {props.factors[0].name}
         {props.factors[0].value}
         <CardContent>
+            {props.clima.map(item=>(<h6>{item.state}</h6>))}
             <LeafletMap center={(props.citySelected.posicion.length > 0)? props.citySelected.posicion : props.position } zoom={props.zoom}>
             <TileLayer
                 attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
