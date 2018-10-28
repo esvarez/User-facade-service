@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
 import GeoContainer from './GeoContainer'
 import './App.css'
 import cities from '../data/cities.json';
@@ -35,6 +35,9 @@ class App extends Component{
             zoom: 10
         })
     }
+    handleOnChangueFactors(e){
+        console.log({value:e.target.value,target:e.target,id:e.target.id});
+    }
 
     render(){
         return(
@@ -43,6 +46,7 @@ class App extends Component{
                 factors = { this.state.factors }
                 citySelected = { this.state.citySelected }
                 onChangeCity = { this.handleOnChangeCity }
+                onChangueFactor = {this.handleOnChangueFactors}
                 position = { this.state.position }
                 zoom = { this.state.zoom }
             />

@@ -6,7 +6,6 @@ import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
-import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 
 
@@ -19,22 +18,22 @@ function CardDetail(){
                 <Grid item xs={12} sm={4}>
                     <Button variant="outlined" color="primary" >
                         Dióxido de azufre<strong>(SO2)</strong>
-                    </Button>                    
+                    </Button>
                 </Grid>
                 <Grid item xs={12} sm={4}>
                     <Button variant="outlined" color="primary" >
                         Monóxido de carbono<strong>(CO)</strong>
-                    </Button>                    
+                    </Button>
                 </Grid>
                 <Grid item xs={12} sm={4}>
                     <Button variant="outlined" color="primary" >
                         Ozono<strong>(O3)</strong>
-                    </Button>                                    
+                    </Button>
                 </Grid>
                 <Grid item xs={12} sm={4}>
                     <Button variant="outlined" color="primary" >
                         Particulas Menores a 2.5<strong>(PM2.5)</strong>
-                    </Button>                    
+                    </Button>
                 </Grid>
                 <Grid item xs={12} sm={4}>
                     <Button variant="outlined" color="primary" >
@@ -44,12 +43,12 @@ function CardDetail(){
                 <Grid item xs={12} sm={4}>
                     <Button variant="outlined" color="primary" >
                         Temperatura<strong>°C</strong>
-                    </Button>                                        
+                    </Button>
                 </Grid>
                 <Grid item xs={12} sm={4}>
                     <Button variant="outlined" color="primary" >
                         Particulas Menores a 10<strong>(PM10)</strong>
-                    </Button>                    
+                    </Button>
                 </Grid>
             </Grid>
             </CardContent>

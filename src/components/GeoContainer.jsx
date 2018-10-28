@@ -14,6 +14,7 @@ const GeoContainer = (props) => (
             factors = {props.factors}
             citySelected = {props.citySelected}
             onChangeCity = { props.onChangeCity }
+            onChangeFactor = { props.onChangueFactor }
         />
         <CardDetail
         className="space-around"
