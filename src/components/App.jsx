@@ -9,6 +9,7 @@ class App extends Component{
         cities,
         factors,
         clima:[],
+        dataChart:[],
         citySelected: {
             id: '',
             city: '',
@@ -18,7 +19,8 @@ class App extends Component{
             19.999440,
             -99.493139
         ],
-        zoom: 4
+        zoom: 4,
+        isGraphVisible: false
     }
     componentWillMount = ()=>{
      fetch('https://api.datos.gob.mx/v2/sinaica?page=2')
@@ -28,6 +30,43 @@ class App extends Component{
                 clima:clima.results
             })
          })
+     fetch('https://api.datos.gob.mx/v2/sinaica?city=Morelia&parametro=O3')
+         .then(response => response.json())
+         .then(data => Math.ceil(data.pagination.total/100))
+         .then(lastPage => {
+                 fetch('https://api.datos.gob.mx/v2/sinaica?city=Morelia&parametro=O3&page='+lastPage)
+                 .then(response => response.json())
+                 .then(data => {
+                     let lastDate =
+                     data = data.results.filter(item=> item['date-insert'].split('T')[0]=="2018-10-28")
+                     data =
+                     {labels: [
+                         '00:00:00',
+                         '03:00:00',
+                         '06:00:00',
+                         '09:00:00',
+                     ],
+                     datasets: [{
+                         data: [.63, .83, .12,.78],
+                         backgroundColor: [
+                         '#FF6384',
+                         '#36A2EB',
+                         '#FFCE56',
+                         '#FF0056'
+                         ],
+                         hoverBackgroundColor: [
+                         '#FF6384',
+                         '#36A2EB',
+                         '#FFCE56',
+                         '#F00E56'
+                         ]
+                     }]}
+                    this.setState({
+                        dataChart:data
+                    })
+                 })
+            }
+         )
     }
     handleOnChangeCity = e=>{
         this.setState({
@@ -50,7 +89,13 @@ class App extends Component{
         this.setState({
             factors:factors
         })
-        console.log(this.state.clima[0].state)
+        console.log(this.state.dataChart)
+    }
+    handleOnClickDetailButton = e => {
+        console.log(e)
+        this.setState({
+            isGraphVisible: true
+        })
     }
 
     render(){
@@ -60,18 +105,59 @@ class App extends Component{
                 cities = { this.state.cities }
                 factors = { this.state.factors }
                 clima = {this.state.clima}
+                dataChart = {this.state.dataChart}
                 citySelected = { this.state.citySelected }
                 onChangeCity = { this.handleOnChangeCity }
                 onChangueFactor = {this.handleOnChangueFactors}
                 position = { this.state.position }
                 zoom = { this.state.zoom }
+
+                isGraphVisible = { this.state.isGraphVisible }
+                onclickDetailButton = { this.handleOnClickDetailButton }
             />
-            </div>
+        </div>
         )
     }
-
 }
+    /*
+    constructor(props) {
+        super(props);
+        this.add = this.add.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+        this.state = {
+          data: [],
+          name:''
+        };
+      }
+      add(){
+        var arr = this.state.data.slice();
+        arr.push({'id':(new Date()).getTime(),'name':this.state.name})
+        this.setState({data:arr})
+      }
+      handleChange(e){
+        this.setState({name:e.target.value})
+      }
 
+    render(){
+        return(
+            <div>
+        Enter Name <input onChange={this.handleChange} type="text" /> <input onClick={this.add} type="button" value="Add" />
+
+        <ul>
+        <ReactCSSTransitionGroup transitionName="anim" transitionAppear={false} transitionEnterTimeout={3000} transitionEnter={true} transitionLeave={false}>
+        {
+          this.state.data.map(function(player) {
+             return <li key={player.id}>{player.name}</li>
+          })
+        }
+        </ReactCSSTransitionGroup>
+        </ul>
+
+      </div>
+            )
+        }
+
+    */
 App.propTypes = { }
 App.defaultProps = { }
 

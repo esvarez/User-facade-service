@@ -8,16 +8,14 @@ import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 
-
-function CardDetail(){
-    return(
-        <Card>
+const CardDetail = (props) => (
+    <Card>
             <CardHeader title="Informacion de la calidad del aire"/>
             <CardContent>
             <Grid container spacing={16}>
                 <Grid item xs={12} sm={4}>
-                    <Button variant="outlined" color="primary" >
-                        Dióxido de azufre<strong>(SO2)</strong>
+                    <Button variant="outlined" color="primary" onClick={props.onclickDetailButton} >
+                        Ozono<strong>(O3)</strong>
                     </Button>
                 </Grid>
                 <Grid item xs={12} sm={4}>
@@ -27,7 +25,7 @@ function CardDetail(){
                 </Grid>
                 <Grid item xs={12} sm={4}>
                     <Button variant="outlined" color="primary" >
-                        Ozono<strong>(O3)</strong>
+                        ODióxido de azufre<strong>(SO2)</strong>
                     </Button>
                 </Grid>
                 <Grid item xs={12} sm={4}>
@@ -53,7 +51,6 @@ function CardDetail(){
             </Grid>
             </CardContent>
         </Card>
-    )
-}
+)
 
 export default CardDetail
