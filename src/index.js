@@ -3,9 +3,10 @@ import ReactDOM from 'react-dom';
 //import './index.css';
 //import App from './App';
 //import * as serviceWorker from './serviceWorker';
-import App from './Ejemplo/app'
+//import App from './Ejemplo/app'
+import MapMx from './components/Map/Map'
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<MapMx />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
