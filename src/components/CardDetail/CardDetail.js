@@ -24,7 +24,7 @@ const CardDetail = (props) => (
                     </Button>
                 </Grid>
                 <Grid item xs={12} sm={4}>
-                    <Button variant="outlined" color="primary" >
+                    <Button variant="outlined" color="primary" onClick={props.onclickDetailButton} >
                         Ozono<strong>(O3)</strong>
                     </Button>
                 </Grid>

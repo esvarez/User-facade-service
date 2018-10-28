@@ -21,16 +21,17 @@ const GeoContainer = (props) => (
         className="space-around"
         onclickDetailButton = { props.onclickDetailButton }
          />
-        <Graphs 
+        <Graphs         
         isGraphVisible = { props.isGraphVisible }
         />
-        <MapMx
+        <MapMx            
             className="space-around"
             factors={props.factors}
             clima={props.clima}
             citySelected = {props.citySelected}
             position = { props.position }
             zoom = { props.zoom }            
+            o3 = { props.o3 }
         />
     </div>
 </div>
