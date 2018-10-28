@@ -14,25 +14,34 @@ class App extends Component{
             ciudadSelected: {
                 id: '',
                 city: '',
-                posicion:[]}
-            },
+                posicion:[]
+            }
         }
+        
 
         this.handleOnChangeCity = this.handleOnChangeCity.bind(this)        
     }
 
     handleOnChangeCity(e){
-        
-        console.log(this)
-        console.log(e)           
+        console.log(this.state.ciudadSelected)
+        console.log(e.target.value)
         console.log(e.target)
+        
+        this.setState({
+            ciudadSelected:{
+                id: e.target.value,
+                city: 'y',
+                posicion: [10,20]
+            }            
+        })
+        console.log(this.state.ciudadSelected)        
     }
 
     render(){
         return(
             <GeoContainer 
-                ciudades = { this.state.ciudades }
-                ciudadSelected = { this.state.ciudadSelected }
+                ciudades = { this.state.ciudades }  
+                ciudadSelected = { this.state.ciudadSelected }              
                 onChangeCity = { this.handleOnChangeCity }
             />
         )

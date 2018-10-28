@@ -30,10 +30,11 @@ const Filter = (props) => (
             <InputLabel htmlFor="age-simple">Ciudad</InputLabel>
             <Select
               onChange = { props.onChangeCity}
-              value={props.ciudadSelect.id}
+              value={props.ciudadSelected.id}
               inputProps={{
-                name: 'age',
+                name: props.ciudades.city,
                 id: 'age-simple',
+                cc: 'valorz'
               }}
             >
               <MenuItem value="">
@@ -41,7 +42,7 @@ const Filter = (props) => (
               </MenuItem>
               {
                 props.ciudades.map( ciudad =>(
-                  <MenuItem value={10}> {ciudad.city}</MenuItem>
+                  <MenuItem value={ciudad.id} id="x" cc=""> {ciudad.city}</MenuItem>
                 ))
               }
               

@@ -16,19 +16,21 @@ Usted seleccionó. <br/> Morelia.
 */
 
 class MapMx extends Component {
-    constructor() {
-        super()
+    constructor(...props){
+        super(...props)
         this.state = {
             lat: 19.999440, 
             lng: -99.493139,
-            zoom: 4
+            zoom: 4            
         }
+        console.log(this.props)
     }
     render(){
         const position = [this.state.lat, this.state.lng]
         return (
             <Card>
-                <CardContent>
+                {this.props.ciudadSelected.id}
+                <CardContent>                    
                     <LeafletMap center={position} zoom={this.state.zoom}>
                     <TileLayer
                         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
