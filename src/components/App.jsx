@@ -3,6 +3,7 @@ import GeoContainer from './GeoContainer'
 import './App.css'
 import cities from '../data/cities.json';
 import factors from '../data/factors.json';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
 class App extends Component{
     state = {
@@ -44,20 +45,58 @@ class App extends Component{
 
     render(){
         return(
-            <GeoContainer
-                cities = { this.state.cities }
-                factors = { this.state.factors }
-                citySelected = { this.state.citySelected }
-                onChangeCity = { this.handleOnChangeCity }
-                onChangueFactor = {this.handleOnChangueFactors}
-                position = { this.state.position }
-                zoom = { this.state.zoom }
-            />
-        )
+        <GeoContainer
+        cities = { this.state.cities }
+        factors = { this.state.factors }
+        citySelected = { this.state.citySelected }
+        onChangeCity = { this.handleOnChangeCity }
+        onChangueFactor = {this.handleOnChangueFactors}
+        position = { this.state.position }
+        zoom = { this.state.zoom }        
+        />
+        )}    
+    
     }
+        
+    /*
+    constructor(props) {
+        super(props);
+        this.add = this.add.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+        this.state = {
+          data: [],
+          name:''
+        };
+      }
+      add(){
+        var arr = this.state.data.slice();
+        arr.push({'id':(new Date()).getTime(),'name':this.state.name})
+        this.setState({data:arr})
+      }
+      handleChange(e){
+        this.setState({name:e.target.value})
+      }    
 
-}
-
+    render(){
+        return(
+            <div>
+        Enter Name <input onChange={this.handleChange} type="text" /> <input onClick={this.add} type="button" value="Add" />
+         
+        <ul>
+        <ReactCSSTransitionGroup transitionName="anim" transitionAppear={false} transitionEnterTimeout={3000} transitionEnter={true} transitionLeave={false}>
+        {
+          this.state.data.map(function(player) {
+             return <li key={player.id}>{player.name}</li>
+          })
+        }
+        </ReactCSSTransitionGroup>
+        </ul>
+         
+      </div>
+            )
+        }
+    
+    */
 App.propTypes = { }
 App.defaultProps = { }
 
