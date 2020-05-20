@@ -14,7 +14,11 @@ import java.util.Optional;
 @Slf4j
 @Component
 public class UserClient extends HttpClientBase {
-
+    @Autowired
+    public UserClient(HttpClient httpClient, ObjectMapper objectMapper) {
+        super(httpClient, objectMapper);
+    }
+/*
     @FunctionalInterface
     private interface CreateRequest {
         HttpRequest get();
@@ -25,10 +29,7 @@ public class UserClient extends HttpClientBase {
     //@Value("${app.auth-server.endpoint.register-ser}")
     private String endpointUser = "/auth/admin/realms/esuarez/users";
 
-    @Autowired
-    public UserClient(HttpClient httpClient, ObjectMapper objectMapper) {
-        super(httpClient, objectMapper);
-    }
+
 
     public HttpResponse<String> registerUser(Object userDto) {
         log.info("event=registerUserInvoked userDto={} token={}", userDto);

@@ -3,14 +3,13 @@ package dev.ericksuarez.user.facade.service.client;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import dev.ericksuarez.user.facade.service.model.Token;
 import lombok.extern.slf4j.Slf4j;
-import org.assertj.core.internal.bytebuddy.implementation.bytecode.Throw;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -19,17 +18,20 @@ import java.util.Optional;
 @Component
 public class AuthClient extends HttpClientBase {
 
-    //@Value("${application.authServer.path}")
-    private String path = "http://localhost:8083";
+    @Value("${application.authServer.path}")
+    private String path;
 
-    //@Value("${app.auth-server.endpoint.auth}")
-    private String endpointAuth = "/auth/realms/master/protocol/openid-connect/token";
+    @Value("${application.authServer.authEndPoint}")
+    private String endpointAuth;
 
-    //@Value("${app.auth-server.user}")
-    private String user = "admin";
+    @Value("${application.authServer.clientId}")
+    private String clientId;
 
-    //@Value("${app.auth-server.password}")
-    private String password = "pass";
+    @Value("${application.authServer.user}")
+    private String user;
+
+    @Value("${application.authServer.password}")
+    private String password;
 
     private Token token;
 
@@ -39,55 +41,42 @@ public class AuthClient extends HttpClientBase {
     }
 
     public Optional<Token> getToken() throws CloneNotSupportedException {
-        return  Optional.of((Token) token.clone());
+        System.out.println(path);
+        if (token == null) {
+            return Optional.empty();
+        }
+        return Optional.of((Token) token.clone());
     }
 
-    public void generateToken(){
+    public Token generateToken(String user, String password){
         log.info("event=generateTokenInvoked");
         var data = new HashMap<Object, Object>();
 
         data.put("username", user);
         data.put("password", password);
         data.put("grant_type", "password");
-        data.put("client_id", "admin-cli");
+        data.put("client_id", clientId);
 
         var request = buildAuthRequest(data);
 
         token = makeRequest(request, Token.class);
         log.info("event=tokenGenerate token={}", token);
+        return token;
     }
 
-    protected HttpResponse<String> makeSafeTokenRequest(HttpRequest request) {
-        log.info("event=makeSafeTokenRequestInvoked request={} token={}", request, token);
-        if (token.getAccessToken() == null) generateToken();
-        HttpResponse<String> response = makeRequest(request);
-        log.info("event=safeResponse response={}", response);
-        if (response.statusCode() == 401){
-            // refreshToken();
-        } else {
-            return response;
-        }
-        return makeRequest(request);
-    }
-
-    protected <T> T makeSafeTokenRequest(HttpRequest request, Class<T> tClass) {
-        //HttpResponse<String> response = makeSafeTokenRequest(request);
-        //return mapping(response, tClass);
-        return null;
-    }
-
-    protected void refreshToken(){
+    protected Token refreshToken(){
         log.info("event=refreshTokenInvoked");
         Map<Object, Object> data = new HashMap<>();
 
         data.put("grant_type", "refresh_token");
-        data.put("client_id", "admin-cli");
+        data.put("client_id", clientId);
         data.put("refresh_token", token.getRefreshToken());
 
         HttpRequest request = buildAuthRequest(data);
 
         token = makeRequest(request, Token.class);
         log.info("event=tokenRefreshed token={}", token);
+        return token;
     }
 
     private HttpRequest buildAuthRequest(Map<Object, Object> data){

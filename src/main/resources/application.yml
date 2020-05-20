@@ -1,0 +1,12 @@
+server:
+  port: 8000
+
+application:
+  authServer:
+    path: http://localhost/path
+    authEndPoint: /auth/realms/master/protocol/openid-connect/token
+    clientId: admin-cli
+    user: admin
+    password: pass
+
+

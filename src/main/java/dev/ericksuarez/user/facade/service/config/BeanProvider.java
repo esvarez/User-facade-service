@@ -3,12 +3,12 @@ package dev.ericksuarez.user.facade.service.config;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
 
 import java.net.http.HttpClient;
 
-@Component
+@Configuration
 public class BeanProvider {
 
     @Bean
