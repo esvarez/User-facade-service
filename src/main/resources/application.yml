@@ -3,7 +3,7 @@ server:
 
 application:
   authServer:
-    path: http://localhost/path
+    path: http://localhost:8083
     authEndPoint: /auth/realms/master/protocol/openid-connect/token
     clientId: admin-cli
     user: admin

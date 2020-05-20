@@ -26,13 +26,13 @@ public class AuthClient extends HttpClientBase {
 
     @Value("${application.authServer.clientId}")
     private String clientId;
-
+/*
     @Value("${application.authServer.user}")
     private String user;
 
     @Value("${application.authServer.password}")
     private String password;
-
+*/
     private Token token;
 
     @Autowired
@@ -41,7 +41,6 @@ public class AuthClient extends HttpClientBase {
     }
 
     public Optional<Token> getToken() throws CloneNotSupportedException {
-        System.out.println(path);
         if (token == null) {
             return Optional.empty();
         }
@@ -64,8 +63,8 @@ public class AuthClient extends HttpClientBase {
         return token;
     }
 
-    protected Token refreshToken(){
-        log.info("event=refreshTokenInvoked");
+    public Token refreshToken(){
+        log.info("event=refreshTokenInvoked token={}", token);
         Map<Object, Object> data = new HashMap<>();
 
         data.put("grant_type", "refresh_token");

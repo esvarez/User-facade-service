@@ -17,6 +17,7 @@ public class UserController {
 
     @GetMapping("/")
     public void foo() throws CloneNotSupportedException {
-        authClient.getToken();
+        //authClient.getToken();
+        authClient.generateToken("admin", "pass");
     }
 }
