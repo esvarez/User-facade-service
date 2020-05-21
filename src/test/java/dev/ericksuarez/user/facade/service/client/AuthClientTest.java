@@ -1,7 +1,6 @@
-package dev.ericksuarez.user.facade.service;
+package dev.ericksuarez.user.facade.service.client;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import dev.ericksuarez.user.facade.service.client.AuthClient;
 import dev.ericksuarez.user.facade.service.model.Token;
 import lombok.val;
 import org.junit.Before;
@@ -11,15 +10,11 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.test.util.ReflectionTestUtils;
 
-import javax.net.ssl.SSLSession;
 import java.io.IOException;
-import java.net.URI;
 import java.net.http.HttpClient;
-import java.net.http.HttpHeaders;
 import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
-import java.util.Optional;
 
+import static dev.ericksuarez.user.facade.service.util.UtilTest.buildResponse;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -81,49 +76,5 @@ public class AuthClientTest {
         val token = authClient.refreshToken();
 
         assertNotNull(token.getAccessToken());
-    }
-
-    private HttpResponse buildResponse() {
-        return new HttpResponse() {
-            @Override
-            public int statusCode() {
-                return 200;
-            }
-
-            @Override
-            public HttpRequest request() {
-                return null;
-            }
-
-            @Override
-            public Optional<HttpResponse> previousResponse() {
-                return Optional.empty();
-            }
-
-            @Override
-            public HttpHeaders headers() {
-                return null;
-            }
-
-            @Override
-            public Object body() {
-                return "bodyTest";
-            }
-
-            @Override
-            public Optional<SSLSession> sslSession() {
-                return Optional.empty();
-            }
-
-            @Override
-            public URI uri() {
-                return null;
-            }
-
-            @Override
-            public HttpClient.Version version() {
-                return null;
-            }
-        };
     }
 }

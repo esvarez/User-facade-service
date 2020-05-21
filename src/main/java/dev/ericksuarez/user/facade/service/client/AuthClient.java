@@ -26,13 +26,7 @@ public class AuthClient extends HttpClientBase {
 
     @Value("${application.authServer.clientId}")
     private String clientId;
-/*
-    @Value("${application.authServer.user}")
-    private String user;
 
-    @Value("${application.authServer.password}")
-    private String password;
-*/
     private Token token;
 
     @Autowired

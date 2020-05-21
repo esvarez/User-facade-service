@@ -5,6 +5,7 @@ application:
   authServer:
     path: http://localhost:8083
     authEndPoint: /auth/realms/master/protocol/openid-connect/token
+    registerUser: /auth/admin/realms/%s/users
     clientId: admin-cli
     user: admin
     password: pass

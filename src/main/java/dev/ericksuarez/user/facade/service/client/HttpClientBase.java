@@ -11,7 +11,9 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Slf4j
 public abstract class HttpClientBase {
@@ -32,6 +34,8 @@ public abstract class HttpClientBase {
             var response = makeRequest(request);
             if (response.statusCode() >= 300){
                 log.error("event=errorMakeRequest response={}", response);
+            } else if (response.statusCode() >= 200){
+                log.info("event=responseSuccessful response={} body={}", response, response.body());
             }
             responseEntity = objectMapper.readValue(response.body().getBytes(), tClass);
             return responseEntity;
@@ -51,6 +55,14 @@ public abstract class HttpClientBase {
             e.printStackTrace();
         }
         return null;
+    }
+
+    protected <T> List<T> makeRequestAsList(HttpRequest request, Class<T> tClass) {
+        List<T> list = makeRequest(request, List.class);
+        System.out.println(list);
+        return list.stream()
+                .map(object -> objectMapper.convertValue(object, tClass))
+                .collect(Collectors.toList());
     }
 
     protected <T> T mapping(HttpResponse<String> response, Class<T> tClass) {
