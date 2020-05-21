@@ -34,11 +34,13 @@ public class AuthClient extends HttpClientBase {
         super(httpClient, objectMapper);
     }
 
-    public Optional<Token> getToken() throws CloneNotSupportedException {
+    public Optional<Token> getToken() {
         if (token == null) {
+            log.warn("event=tokenNotExist token={}", token);
             return Optional.empty();
         }
-        return Optional.of((Token) token.clone());
+        log.info("event=returnTokenExist token={}", token);
+        return Optional.of(token);
     }
 
     public Token generateToken(String user, String password){

@@ -2,6 +2,7 @@ package dev.ericksuarez.user.facade.service.client;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import dev.ericksuarez.user.facade.service.error.UnauthorizedException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -32,11 +33,6 @@ public abstract class HttpClientBase {
         T responseEntity;
         try {
             var response = makeRequest(request);
-            if (response.statusCode() >= 300){
-                log.error("event=errorMakeRequest response={}", response);
-            } else if (response.statusCode() >= 200){
-                log.info("event=responseSuccessful response={} body={}", response, response.body());
-            }
             responseEntity = objectMapper.readValue(response.body().getBytes(), tClass);
             return responseEntity;
         } catch (IOException e) {
@@ -48,7 +44,18 @@ public abstract class HttpClientBase {
     protected HttpResponse<String> makeRequest(HttpRequest request) {
         log.info("event=makeRequestInvoked request={}", request);
         try {
-            return httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+            var response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+            if (response.statusCode() >= 300){
+                log.error("event=errorMakeRequest response={}", response);
+                // TODO create custom error
+                if (response.statusCode() == 401){
+                    throw new UnauthorizedException();
+                }
+                throw new RuntimeException("Error" + response.statusCode());
+            } else if (response.statusCode() >= 200){
+                log.info("event=responseSuccessful response={} body={}", response, response.body());
+            }
+            return response;
         } catch (IOException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {

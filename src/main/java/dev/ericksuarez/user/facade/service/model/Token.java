@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder(toBuilder = true)
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
-public class Token implements Cloneable {
+public class Token {
     private String accessToken;
 
     private int expiresIn;
@@ -28,8 +28,4 @@ public class Token implements Cloneable {
     private String sessionState;
 
     private String scope;
-
-    public Object clone() throws CloneNotSupportedException{
-        return super.clone();
-    }
 }
